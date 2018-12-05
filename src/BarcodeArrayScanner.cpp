@@ -8,10 +8,10 @@
 #include <fstream>
 #include <array>
 
-//#include "BarcodeArrayScanner.h"
+
 using namespace std;
 
-int main() {
+/*int main() {
 
 	UPC *arr = new UPC[1200000];
 	int size = 0;
@@ -50,5 +50,5 @@ int main() {
 	cout << "time: " << t*1.0/CLOCKS_PER_SEC << " seconds" << endl;
 
 	return 0;
-}
+}*/
 

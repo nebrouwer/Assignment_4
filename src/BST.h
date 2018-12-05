@@ -22,69 +22,28 @@ class BinarySearchTree{
 
 public:
 	BinarySearchTree();
-	void printInOrder(){printInOrder(root);}
-	void printPreOrder(){printPreOrder(root);}
-	void printPostOrder(){printPostOrder(root);}
 	int height(){return height(root);}
 	void insert(T& item){insert(root, item);}
-	bool search(T& item){return search(root,item);}
 	T find(T& e){return find(root,e);}
 	void deletenode(T& item){deletenode(root, item);}
 	~BinarySearchTree(){destroy(root);}
 
 private:
 	node<T>* root;
-	void printInOrder(node<T>*);
-	void printPreOrder(node<T>*);
-	void printPostOrder(node<T>*);
 	void destroy(node<T>*);
 	int height(node<T>*);
-	int max(int, int);
 	void insert(node<T>*&, T&);
-	bool search(node<T>*, T&);
 	T find(node<T>*,T&);
 	void deletenode(node<T>*&, T&);
 };
 
-
+// Main constructor
 template <class T>
 BinarySearchTree<T>::BinarySearchTree(){
 	root = NULL;
 }
 
-template <class T>
-void BinarySearchTree<T>::printInOrder(node<T>* p){
-	if(p!=NULL){
-		printInOrder(p->left);
-		cout<<p->data<<" ";
-		printInOrder(p->right);
-	}
-}
-
-template <class T>
-void BinarySearchTree<T>::printPreOrder(node<T>* p){
-	if(p!=NULL){
-		cout<<p->data<<" ";
-		printPreOrder(p->left);
-		printPreOrder(p->right);
-	}
-}
-
-template <class T>
-void BinarySearchTree<T>::printPostOrder(node<T>* p){
-	if(p!=NULL){
-		printPostOrder(p->left);
-		printPostOrder(p->right);
-		cout<<p->data<<" ";
-	}
-}
-template <class T>
-int BinarySearchTree<T>::max(int x, int y){
-	if (x>y)
-		return x;
-	return y;
-}
-
+// Returns the height of the tree
 template <class T>
 int BinarySearchTree<T>::height(node<T>* p){
 	if(p!=NULL){
@@ -93,6 +52,7 @@ int BinarySearchTree<T>::height(node<T>* p){
 	return -1;
 }
 
+// Function to destroy the tree
 template <class T>
 void BinarySearchTree<T>::destroy(node<T>* p){
 	if(p!= NULL){
@@ -103,6 +63,7 @@ void BinarySearchTree<T>::destroy(node<T>* p){
 	}
 }
 
+// Function to insert into the BST
 template <class T>
 void BinarySearchTree<T>::insert(node<T>*& p, T& item){
 	if(p == NULL){
@@ -117,17 +78,7 @@ void BinarySearchTree<T>::insert(node<T>*& p, T& item){
 	}
 }
 
-template <class T>
-bool BinarySearchTree<T>::search(node<T>* p, T& item){
-	if(p == NULL)
-		return false;
-	else if(item<p->data)
-		return search(p->left, item);
-	else if(item>p->data)
-		return search(p->right, item);
-	return true;
-}
-
+// Function to find an item in the BST
 template <class T>
 T BinarySearchTree<T>::find(node<T>* p, T& e){
 	if (p == NULL)
@@ -140,6 +91,7 @@ T BinarySearchTree<T>::find(node<T>* p, T& e){
 		return find(p->left, e);
 }
 
+// Function to delete a given node
 template <class T>
 void BinarySearchTree<T>::deletenode(node<T>*& p, T& item){
 	//item not found, do nothing

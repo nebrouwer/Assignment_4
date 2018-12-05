@@ -1,9 +1,6 @@
-/*
- * UPC.h
- *
- *  Created on: Dec 3, 2018
- *      Author: nicho
- */
+// Nick Brouwer
+// Assignment 4
+
 
 #ifndef UPC_H_
 #define UPC_H_

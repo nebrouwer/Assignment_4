@@ -8,7 +8,7 @@
 #include "UPC.h"
 using namespace std;
 
-/*int main() {
+int main() {
 	BinarySearchTree<UPC> bst;
 
 	ifstream file("upc_corpus.txt");
@@ -43,4 +43,4 @@ using namespace std;
 	cout << "time: " << t*1.0/CLOCKS_PER_SEC << " seconds" << endl;
 
 	return 0;
-}*/
+}

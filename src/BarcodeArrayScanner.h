@@ -13,8 +13,10 @@ class BarcodeArrayScanner: public Scanner<T>{
      int size;
 
 public:
-     BarcodeArrayScanner(T* _database, int size):database(_database), size(size){}
+    // Constructor for the main array scanner object
+    BarcodeArrayScanner(T* _database, int size):database(_database), size(size){}
 
+    // Function to scan the array for a UPC
 	void scan(T& product){
 		for(int i = 0; i < size; i++){
 			if(product.code == database[i].code){

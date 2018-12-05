@@ -15,8 +15,10 @@ class BarcodeBSTScanner: public Scanner<T>{
      BinarySearchTree<T> *database;
 
 public:
+    // Constructor for the main BST scanner object
 	BarcodeBSTScanner(BinarySearchTree<T> *_database):database(_database){}
 
+	// Function to scan BST for a UPC
 	void scan(T& product){
 		T found = database->find(product);
 		product = found;
