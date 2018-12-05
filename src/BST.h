@@ -13,6 +13,8 @@ struct node{
 	T data;
 	node<T>* left;
 	node<T>* right;
+
+	node() : data(), left(NULL), right(NULL) {}
 };
 
 template <class T>
@@ -26,8 +28,7 @@ public:
 	int height(){return height(root);}
 	void insert(T& item){insert(root, item);}
 	bool search(T& item){return search(root,item);}
-	T findMax(T& e){return findMax(root,e);}
-	T findMin(T& e){return findMin(root,e);}
+	T find(T& e){return find(root,e);}
 	void deletenode(T& item){deletenode(root, item);}
 	~BinarySearchTree(){destroy(root);}
 
@@ -41,8 +42,7 @@ private:
 	int max(int, int);
 	void insert(node<T>*&, T&);
 	bool search(node<T>*, T&);
-	T findMax(node<T>*,T&);
-	T findMin(node<T>*, T&);
+	T find(node<T>*,T&);
 	void deletenode(node<T>*&, T&);
 };
 
@@ -129,23 +129,15 @@ bool BinarySearchTree<T>::search(node<T>* p, T& item){
 }
 
 template <class T>
-T BinarySearchTree<T>::findMax(node<T>* p, T& e){
-	if (p==NULL)
+T BinarySearchTree<T>::find(node<T>* p, T& e){
+	if (p == NULL)
 		return e;
-	else if(p->right == NULL)
+	if(p->data == e)
 		return p->data;
-	else
-		return findMax(p->right,e);
-}
-
-template <class T>
-T BinarySearchTree<T>::findMin(node<T>* p, T& e){
-	if (p==NULL)
-		return e;
-	else if(p->left == NULL)
-		return p->data;
-	else
-		return findMin(p->left,e);
+	else if(p->data < e)
+		return find(p->right, e);
+	else if(p->data > e)
+		return find(p->left, e);
 }
 
 template <class T>

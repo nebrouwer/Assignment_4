@@ -4,27 +4,30 @@
 #ifndef BARCODEARRAYSCANNER_H_
 #define BARCODEARRAYSCANNER_H_
 #include <iostream>
+#include "Scanner.h"
 using namespace std;
 
-class BarcodeArrayScanner {
+template <class T>
+class BarcodeArrayScanner: public Scanner<T>{
+     T* database;
+     int size;
+
 public:
-	int size;
-	BarcodeArrayScanner();
-	virtual ~BarcodeArrayScanner();
-	void insert(string);
+     BarcodeArrayScanner(T* _database, int size):database(_database), size(size){}
+
+	void scan(T& product){
+		for(int i = 0; i < size; i++){
+			if(product.code == database[i].code){
+				product = database[i];
+				return;
+			}
+		}
+	}
+
+	~BarcodeArrayScanner(){
+		delete database;
+	}
 };
 
-BarcodeArrayScanner::BarcodeArrayScanner(){
-	size = 1000;
-}
-
-void insert(string){
-
-
-}
-
-BarcodeArrayScanner::~BarcodeArrayScanner() {
-
-}
 
 #endif /* BARCODEARRAYSCANNER_H_ */
